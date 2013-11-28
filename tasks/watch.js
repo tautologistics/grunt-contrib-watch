@@ -39,6 +39,9 @@ module.exports = function(grunt) {
 
   // When task runner has ended
   taskrun.on('end', function(time) {
+    Object.keys(taskrun.targets).forEach(function (targetKey) {
+      taskrun.targets[targetKey].changedFiles = Object.create(null);
+    });
     if (time > 0) {
       dateFormat(time);
     }
